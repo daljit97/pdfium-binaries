@@ -23,6 +23,11 @@ on:
         type: boolean
         required: false
         default: false
+      sanitizer:
+        description: Sanitizer
+        type: string
+        required: false
+        default: address
       target_os:
         description: Target OS (android|ios|linux|mac|wasm|win)
         type: string
@@ -81,6 +86,7 @@ jobs:
           PDFium_TARGET_LIBC=${{ inputs.target_libc }}
           PDFium_ENABLE_V8=${{ inputs.enable_v8 }}
           PDFium_VERSION=${{ inputs.version }}
+          PDFium_SANITIZER=${{ inputs.sanitizer }}
           EMSDK_VERSION=${{ inputs.emsdk_version }}
           MUSL_URL=${{ secrets.MUSL_URL }}
           END

@@ -20,6 +20,10 @@ mkdir -p "$BUILD"
   echo "treat_warnings_as_errors = false"
   echo "is_component_build = false"
 
+  if [ "$PDFium_SANITIZER" == "address" ]; then
+    echo "is_asan = true"
+  fi
+  
   if [ "$ENABLE_V8" == "true" ]; then
     echo "v8_use_external_startup_data = false"
     echo "v8_enable_i18n_support = false"
