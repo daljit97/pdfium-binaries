@@ -19,7 +19,7 @@ mkdir -p "$BUILD"
   echo "pdf_enable_xfa = $ENABLE_V8"
   echo "treat_warnings_as_errors = false"
   echo "is_component_build = false"
-  echo "cflags = ['-fPIC']"
+  echo "cflags = [\"-fPIC\"]"
   
   if [ "$PDFium_SANITIZER" == "thread" ]; then
     echo "is_tsan = true"
