@@ -27,7 +27,7 @@ on:
         description: Sanitizer
         type: string
         required: false
-        default: none
+        default: thread
       target_os:
         description: Target OS (android|ios|linux|mac|wasm|win)
         type: string

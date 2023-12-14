@@ -20,8 +20,8 @@ mkdir -p "$BUILD"
   echo "treat_warnings_as_errors = false"
   echo "is_component_build = false"
 
-  if [ "$PDFium_SANITIZER" == "address" ]; then
-    echo "is_asan = true"
+  if [ "$PDFium_SANITIZER" == "thread" ]; then
+    echo "is_tsan = true"
   fi
   
   if [ "$ENABLE_V8" == "true" ]; then
