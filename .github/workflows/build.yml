@@ -27,7 +27,7 @@ on:
         description: Sanitizer
         type: string
         required: false
-        default: thread
+        default: none
       target_os:
         description: Target OS (android|ios|linux|mac|wasm|win)
         type: string
@@ -125,7 +125,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ steps.init.outputs.artifact }}
+          name: ${{ steps.init.outputs.artifact }}-${{ inputs.sanitizer }}
           path: staging/
       - name: Test
         run: steps/08-test.sh
