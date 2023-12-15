@@ -64,7 +64,7 @@ jobs:
       sanitizer: thread
 
   linux_x64_usan:
-    name: Linux x64 TSAN
+    name: Linux x64 USAN
     uses: ./.github/workflows/build.yml
     with:
       branch: ${{ github.event.inputs.branch }}
