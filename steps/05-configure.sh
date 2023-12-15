@@ -23,9 +23,9 @@ mkdir -p "$BUILD"
   
   if [ "$PDFium_SANITIZER" == "thread" ]; then
     echo "is_tsan = true"
-  elif [ "$PDFium_SANITIZER" == "address" ] then
+  elif [ "$PDFium_SANITIZER" == "address" ]; then
     echo "is_asan = true"
-  elif [ "$PDFium_SANITIZER" == "undefined"] then
+  elif [ "$PDFium_SANITIZER" == "undefined"]; then
     echo "is_usan = true"
   fi
   
