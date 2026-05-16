@@ -25,11 +25,12 @@ Options:
   -g 0-10   = Go immediately to step n (default=0)
   -d        = debug build
   -s        = static build (experimental)
-  -j        = enable v8"
+  -j        = enable v8
+  -k        = enable Skia"
   exit
 fi
 
-while getopts "b:djmsg:" OPTION
+while getopts "b:djmsg:k" OPTION
 do
   case $OPTION in
     b)
@@ -42,6 +43,10 @@ do
 
     j)
       export PDFium_ENABLE_V8=true
+      ;;
+
+    k)
+      export PDFium_ENABLE_SKIA=true
       ;;
 
     s)

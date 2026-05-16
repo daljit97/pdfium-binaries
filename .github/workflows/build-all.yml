@@ -20,6 +20,11 @@ on:
         type: boolean
         required: false
         default: false
+      enable_skia:
+        description: Enable Skia
+        type: boolean
+        required: false
+        default: true
       enable_asan:
         description: Build supported ASan variants
         type: boolean
@@ -67,6 +72,7 @@ jobs:
       target_os: ${{ matrix.target_os }}
       target_cpu: ${{ matrix.target_cpu }}
       enable_v8: false
+      enable_skia: ${{ github.event.inputs.enable_skia == 'true' }}
       sanitizer: none
 
   build_asan:
@@ -93,6 +99,7 @@ jobs:
       target_os: ${{ matrix.target_os }}
       target_cpu: ${{ matrix.target_cpu }}
       enable_v8: false
+      enable_skia: ${{ github.event.inputs.enable_skia == 'true' }}
       sanitizer: asan
 
   build_tsan:
@@ -113,6 +120,7 @@ jobs:
       target_os: ${{ matrix.target_os }}
       target_cpu: ${{ matrix.target_cpu }}
       enable_v8: false
+      enable_skia: ${{ github.event.inputs.enable_skia == 'true' }}
       sanitizer: tsan
 
   publish:

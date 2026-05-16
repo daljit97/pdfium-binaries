@@ -6,6 +6,7 @@ BUILD=${PDFium_BUILD_DIR:-$SOURCE/out}
 TARGET_CPU=${PDFium_TARGET_CPU:?}
 TARGET_ENVIRONMENT=${PDFium_TARGET_ENVIRONMENT:-}
 ENABLE_V8=${PDFium_ENABLE_V8:-false}
+ENABLE_SKIA=${PDFium_ENABLE_SKIA:-false}
 IS_DEBUG=${PDFium_IS_DEBUG:-false}
 BUILD_TYPE=${PDFium_BUILD_TYPE:-shared}
 SANITIZER=${PDFium_SANITIZER:-none}
@@ -20,6 +21,7 @@ mkdir -p "$BUILD"
   echo "target_os = \"$OS\""
   echo "pdf_enable_v8 = $ENABLE_V8"
   echo "pdf_enable_xfa = $ENABLE_V8"
+  echo "pdf_use_skia = $ENABLE_SKIA"
   echo "treat_warnings_as_errors = false"
   echo "is_component_build = false"
 
