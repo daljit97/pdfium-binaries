@@ -3,6 +3,7 @@
 OS=${PDFium_TARGET_OS:?}
 CPU="${PDFium_TARGET_CPU:?}"
 TARGET_ENVIRONMENT="${PDFium_TARGET_ENVIRONMENT:-}"
+SANITIZER=${PDFium_SANITIZER:-none}
 SOURCE_DIR="$PWD/example"
 CMAKE_ARGS=()
 CAN_RUN_ON_HOST=false
@@ -10,6 +11,10 @@ EXAMPLE="./example"
 SKIP_TESTS=false
 
 export PDFium_DIR="$PWD/staging"
+
+if [ "$SANITIZER" != "none" ] && [ -n "$SANITIZER" ]; then
+  SKIP_TESTS=true
+fi
 
 case "$OS" in
   android)

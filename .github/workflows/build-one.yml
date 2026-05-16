@@ -56,6 +56,15 @@ on:
         type: boolean
         required: false
         default: false
+      sanitizer:
+        description: Sanitizer
+        type: choice
+        required: false
+        default: none
+        options:
+          - none
+          - asan
+          - tsan
 
 jobs:
   build:
@@ -71,3 +80,4 @@ jobs:
       target_environment: ${{ github.event.inputs.target_environment }}
       enable_v8: ${{ github.event.inputs.enable_v8 == 'true' }}
       emsdk_version: ${{ github.event.inputs.emsdk_version }}
+      sanitizer: ${{ github.event.inputs.sanitizer }}

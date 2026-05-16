@@ -5,6 +5,7 @@ OS=${PDFium_TARGET_OS:?}
 VERSION=${PDFium_VERSION:-}
 PATCHES="$PWD/patches"
 BUILD_TYPE=${PDFium_BUILD_TYPE:-shared}
+SANITIZER=${PDFium_SANITIZER:-none}
 
 SOURCE=${PDFium_SOURCE_DIR:-pdfium}
 BUILD=${PDFium_BUILD_DIR:-pdfium/out}
@@ -71,6 +72,15 @@ case "$OS-$BUILD_TYPE" in
     mv "$BUILD/obj/pdfium.lib" "$STAGING_LIB"
     ;;
 esac
+
+if [ "$SANITIZER" == "asan" ] && [ "$OS" == "win" ]; then
+  shopt -s nullglob
+  for DLL in "$BUILD"/clang_rt.asan_dynamic-*.dll; do
+    mkdir -p "$STAGING_BIN"
+    cp "$DLL" "$STAGING_BIN"
+  done
+  shopt -u nullglob
+fi
 
 if [ -n "$VERSION" ]; then
   cat >"$STAGING/VERSION" <<END
